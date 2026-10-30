@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto | MADONCHELLE</title>
+    <style>
+        @font-face {
+            font-family: "Modern Romance";
+            src: url("Modern%20Romance.otf") format("opentype");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Clash Display";
+            src: url("ClashDisplay-Variable.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 200 700;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Tamrin";
+            src: url("Tamrin.otf") format("opentype");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "High Cruiser";
+            src: url("HighCruiser-PersonalUseOnly.otf") format("opentype");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --header-height: 90px;
+            --page-background: #fafafa;
+            --site-header-background: var(--page-background);
+            --page-scrollbar-width: 2px;
+            --page-scrollbar-thumb: #777777;
+            --page-scrollbar-track: #000000;
+            --page-scrollbar-thumb-hover: #999999;
+        }
+
+        html {
+            scrollbar-color: var(--page-scrollbar-thumb) var(--page-scrollbar-track);
+            scrollbar-width: thin;
+        }
+
+        html::-webkit-scrollbar {
+            width: var(--page-scrollbar-width);
+        }
+
+        html::-webkit-scrollbar-track {
+            background: var(--page-scrollbar-track);
+        }
+
+        html::-webkit-scrollbar-thumb {
+            border: 0;
+            border-radius: 999px;
+            background: var(--page-scrollbar-thumb);
+        }
+
+        html::-webkit-scrollbar-thumb:hover {
+            background: var(--page-scrollbar-thumb-hover);
+        }
+
+        body {
+            margin: 0;
+            color: #17251f;
+            background: var(--page-background);
+            font-family: "Clash Display", sans-serif;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            min-height: var(--header-height);
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 32px;
+            background: var(--site-header-background);
+        }
+
+        .header-back {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #17251f;
+            place-items: center;
+            text-decoration: none;
+            transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+        }
+
+        .header-back svg {
+            display: block;
+            width: 25px;
+            height: 25px;
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.35;
+        }
+
+        .header-back:hover,
+        .header-back:focus-visible {
+            color: #18372d;
+            background: var(--page-background);
+            transform: translateX(-2px);
+        }
+
+        .site-logo {
+            display: flex;
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            align-items: center;
+            justify-content: center;
+            width: max-content;
+            color: #17251f;
+            font-family: "High Cruiser", sans-serif;
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        @media (max-width: 720px) {
+            .site-logo {
+                font-size: clamp(11px, 3.4vw, 14px);
+                letter-spacing: 0.02em;
+            }
+        }
+
+        .header-cart {
+            position: relative;
+            display: grid;
+            width: 40px;
+            height: 40px;
+            margin-left: auto;
+            color: #18372d;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            place-items: center;
+            transition: color 180ms ease, transform 180ms ease;
+        }
+
+        .header-cart:hover,
+        .header-cart:focus-visible {
+            color: #777777;
+            transform: translateY(-1px);
+        }
+
+        .header-cart svg {
+            width: 25px;
+            height: 25px;
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.35;
+        }
+
+        main {
+            width: min(calc(100% - 64px), 1440px);
+            margin: 0 auto;
+            padding: 12px 0;
+        }
+
+        .product-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+            align-items: start;
+            gap: clamp(20px, 3vw, 40px);
+        }
+
+        .gallery-shell {
+            position: relative;
+            min-width: 0;
+        }
+
+        @keyframes skeleton-shimmer {
+            from {
+                background-position: -200% 0;
+            }
+
+            to {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton-shimmer {
+            background-color: #e7e7e5;
+            background-image: linear-gradient(90deg, #e7e7e5 0%, #eeeeec 36%, #ffffff 50%, #eeeeec 64%, #e7e7e5 100%);
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.2s linear infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .skeleton-shimmer {
+                animation: none;
+            }
+        }
+
+        .product-gallery {
+            display: flex;
+            width: min(100%, 720px, calc(100svh - var(--header-height) - 24px));
+            height: auto;
+            aspect-ratio: 1;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            padding: 0;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+        }
+
+        .gallery-loading-skeleton {
+            width: 100%;
+        }
+
+        .product-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-image {
+            display: block;
+            width: 100%;
+            flex: 0 0 auto;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: var(--page-background);
+            scroll-snap-align: start;
+        }
+
+        .gallery-image.is-square {
+            aspect-ratio: 1;
+        }
+
+        .gallery-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .gallery-shell.is-loading .product-gallery {
+            visibility: hidden;
+        }
+
+        .gallery-shell.is-loading .gallery-scroll-controls {
+            visibility: hidden;
+        }
+
+        .gallery-loading-skeleton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            width: min(100%, 720px, calc(100svh - var(--header-height) - 24px));
+            aspect-ratio: 1;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .gallery-shell.is-loading .gallery-loading-skeleton {
+            display: flex;
+        }
+
+        .gallery-loading-skeleton span {
+            flex: 0 0 100%;
+            aspect-ratio: 1;
+        }
+
+        .product-gallery.is-lipstick .gallery-image:nth-child(1) img {
+            transform: none;
+        }
+
+        .product-gallery.is-lipstick .gallery-image:nth-child(2) img {
+            transform: none;
+        }
+
+        .product-gallery.is-contained .gallery-image img {
+            object-fit: contain;
+        }
+
+        .gallery-scroll-controls {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transform: translateY(-50%);
+        }
+
+        .gallery-scroll-controls button {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(23, 37, 31, 0.3);
+            border-radius: 50%;
+            color: #17251f;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 2px 10px rgba(23, 37, 31, 0.12);
+            cursor: pointer;
+            place-items: center;
+            transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+        }
+
+        .gallery-scroll-controls button:hover {
+            border-color: rgba(23, 37, 31, 0.6);
+            background: #ffffff;
+            box-shadow: 0 4px 14px rgba(23, 37, 31, 0.18);
+            transform: scale(1.06);
+        }
+
+        .gallery-scroll-controls button:focus-visible {
+            outline: 2px solid #17251f;
+            outline-offset: 3px;
+        }
+
+        .gallery-scroll-controls svg {
+            display: block;
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.5;
+        }
+
+        .product-info {
+            position: sticky;
+            top: calc(var(--header-height) + 54px);
+            display: flex;
+            min-height: min(720px, calc(100svh - var(--header-height) - 24px));
+            flex-direction: column;
+            padding: clamp(18px, 3vw, 36px);
+            background: var(--page-background);
+        }
+
+        .product-info.is-loading > :not(.product-detail-skeleton) {
+            visibility: hidden;
+        }
+
+        .product-detail-skeleton {
+            position: absolute;
+            inset: clamp(18px, 3vw, 36px);
+            display: none;
+            grid-template-rows: 48px auto 12px 24px 54px 1fr;
+            align-content: start;
+            gap: 20px;
+        }
+
+        .product-info.is-loading .product-detail-skeleton {
+            display: grid;
+        }
+
+        .product-detail-skeleton span,
+        .product-detail-skeleton i {
+            display: block;
+            border-radius: 3px;
+        }
+
+        .product-skeleton-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .product-skeleton-title {
+            width: 72%;
+            height: 34px;
+        }
+
+        .product-skeleton-wish {
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            border-radius: 50%;
+        }
+
+        .product-skeleton-description {
+            display: grid;
+            align-content: start;
+            gap: 12px;
+        }
+
+        .product-skeleton-description i {
+            height: 12px;
+        }
+
+        .product-skeleton-description i:nth-child(odd) {
+            width: 94%;
+        }
+
+        .product-skeleton-description i:nth-child(even) {
+            width: 78%;
+        }
+
+        .product-skeleton-price {
+            width: 28%;
+        }
+
+        .product-skeleton-status {
+            width: 40%;
+        }
+
+        .product-skeleton-button {
+            width: 100%;
+        }
+
+        .product-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .product-info h1 {
+            min-width: 0;
+            margin: 0;
+            font-family: "Clash Display", sans-serif;
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 700;
+            letter-spacing: 0;
+            line-height: 1.15;
+            text-transform: uppercase;
+        }
+
+        .wish-button {
+            display: grid;
+            flex: 0 0 48px;
+            width: 48px;
+            height: 48px;
+            border: 0;
+            border-radius: 50%;
+            padding: 0;
+            color: #18372d;
+            background: transparent;
+            cursor: pointer;
+            place-items: center;
+        }
+
+        .wish-button:hover,
+        .wish-button:focus-visible {
+            background: var(--page-background);
+        }
+
+        .wish-button svg {
+            display: block;
+            width: 29px;
+            height: 29px;
+            overflow: visible;
+            transform: translateY(-3px);
+        }
+
+        .wish-button.is-saved {
+            color: #c75445;
+        }
+
+        .wish-button.is-saved svg path {
+            fill: currentColor;
+        }
+
+        .product-description {
+            display: block;
+            margin: 18px 0 20px;
+            color: #64736c;
+            font-size: 15px;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .product-description p {
+            display: -webkit-box;
+            overflow: hidden;
+            margin: 0;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+        }
+
+        .product-price {
+            margin: auto 0 18px;
+            color: #17251f;
+            font-family: "Clash Display", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .add-to-cart {
+            flex: 1 1 100%;
+            width: 100%;
+            min-height: 54px;
+            border: 0;
+            padding: 14px 20px;
+            color: #ffffff;
+            background: #000000;
+            cursor: pointer;
+            font: inherit;
+            font-size: 15px;
+            letter-spacing: 0.06em;
+            transition: flex-basis 220ms ease, font-size 220ms ease, padding 220ms ease, background-color 180ms ease;
+        }
+
+        .product-purchase-controls {
+            display: flex;
+            flex: 0 0 0;
+            width: 0;
+            gap: 8px;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: flex-basis 220ms ease, opacity 180ms ease, visibility 0s linear 220ms;
+        }
+
+        .product-actions.is-in-cart .product-purchase-controls {
+            flex-basis: 104px;
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .product-actions {
+            display: flex;
+            width: 100%;
+            gap: 0;
+            transition: gap 220ms ease;
+        }
+
+        .product-actions.is-in-cart {
+            gap: 8px;
+        }
+
+        .product-actions.is-in-cart .add-to-cart {
+            flex-basis: 0;
+            width: auto;
+            padding-right: 8px;
+            padding-left: 8px;
+            font-size: 12px;
+        }
+
+        .quantity-icon-button {
+            display: grid;
+            flex: 0 0 48px;
+            width: 48px;
+            height: 54px;
+            border: 1px solid currentColor;
+            background: var(--page-background);
+            cursor: pointer;
+            place-items: center;
+        }
+
+        .quantity-icon-button svg {
+            display: block;
+            width: 29px;
+            height: 29px;
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.8;
+        }
+
+        .quantity-icon-button.remove-one {
+            color: #c62828;
+        }
+
+        .quantity-icon-button.add-one {
+            color: #218838;
+        }
+
+        .quantity-icon-button:hover,
+        .quantity-icon-button:focus-visible {
+            background: var(--page-background);
+        }
+
+        .add-to-cart:hover,
+        .add-to-cart:focus-visible {
+            background: #18372d;
+        }
+
+        .add-to-cart:disabled {
+            background: #64736c;
+            cursor: not-allowed;
+        }
+
+        .status-message {
+            min-height: 20px;
+            margin: 10px 0 0;
+            color: #64736c;
+            font-size: 13px;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            z-index: 19;
+            inset: 0;
+            visibility: hidden;
+            background: rgba(23, 37, 31, 0.35);
+            opacity: 0;
+            transition: opacity 220ms ease, visibility 220ms ease;
+        }
+
+        .cart-overlay.is-visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .cart-panel {
+            position: fixed;
+            z-index: 20;
+            top: 0;
+            right: 0;
+            display: flex;
+            width: min(420px, 100%);
+            height: 100vh;
+            height: 100dvh;
+            flex-direction: column;
+            padding: 28px;
+            background: var(--page-background);
+            box-shadow: -12px 0 35px rgba(23, 37, 31, 0.16);
+            transform: translateX(105%);
+            transition: transform 220ms ease;
+        }
+
+        .cart-panel.is-open {
+            transform: translateX(0);
+        }
+
+        .cart-header,
+        .cart-item,
+        .panel-tabs {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-header {
+            justify-content: space-between;
+            border-bottom: 1px solid #dce3dd;
+            padding-bottom: 18px;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .close-button {
+            border: 0;
+            color: #18372d;
+            background: transparent;
+            cursor: pointer;
+            font-size: 28px;
+        }
+
+        .panel-tabs {
+            gap: 8px;
+            padding: 18px 0;
+        }
+
+        .tab-button {
+            flex: 1;
+            border: 1px solid #dce3dd;
+            padding: 11px 8px;
+            color: #000000;
+            background: var(--page-background);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tab-button.is-active {
+            color: #ffffff;
+            background: #000000;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid #edf0eb;
+            padding: 16px 0;
+        }
+
+        .cart-item strong,
+        .cart-item span {
+            display: block;
+        }
+
+        .cart-item strong {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .cart-item span {
+            color: #64736c;
+            font-size: 13px;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quantity-button,
+        .remove-button {
+            border: 1px solid #dce3dd;
+            color: #18372d;
+            background: var(--page-background);
+            cursor: pointer;
+        }
+
+        .quantity-button {
+            width: 26px;
+            height: 26px;
+        }
+
+        .remove-button {
+            margin-top: 2px;
+            border: 0;
+            color: #c75445;
+            font-size: 12px;
+        }
+
+        .empty-message {
+            padding: 35px 0;
+            color: #64736c;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #dce3dd;
+            padding-top: 20px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .checkout-button {
+            width: 100%;
+            border: 0;
+            padding: 14px;
+            color: #000000;
+            background: #f2b8c6;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --header-height: 76px;
+            }
+
+            .site-header {
+                padding: 3px 16px;
+            }
+
+            .header-back {
+                width: 36px;
+                height: 40px;
+            }
+
+            .header-cart {
+                width: 36px;
+                height: 40px;
+            }
+
+            .site-logo {
+                font-size: clamp(11px, 3.4vw, 14px);
+                letter-spacing: 0.02em;
+            }
+
+            main {
+                width: calc(100% - 32px);
+                padding-top: 16px;
+            }
+
+            .product-layout {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 20px;
+            }
+
+            .product-gallery {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1;
+                flex-direction: row;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 0;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+            }
+
+            .product-gallery::-webkit-scrollbar {
+                display: none;
+            }
+
+            .gallery-image {
+                width: 100%;
+                height: 100%;
+                flex-basis: 100%;
+            }
+
+            .gallery-scroll-controls {
+                top: 50%;
+                right: 8px;
+                left: auto;
+                gap: 6px;
+                transform: translateY(-50%);
+            }
+
+            .gallery-scroll-controls button {
+                width: 32px;
+                height: 32px;
+            }
+
+            .gallery-scroll-controls svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .gallery-scroll-controls button:first-child svg {
+                transform: rotate(-90deg);
+            }
+
+            .gallery-scroll-controls button:last-child svg {
+                transform: rotate(-90deg);
+            }
+
+            .product-info {
+                position: static;
+                min-height: 0;
+                padding: 20px;
+            }
+
+            .product-info h1 {
+                overflow-wrap: anywhere;
+                font-size: clamp(24px, 7vw, 32px);
+            }
+
+            .product-price {
+                margin: 0 0 12px;
+            }
+
+            .cart-panel {
+                padding: 22px 20px;
+            }
+
+            .product-title-row {
+                gap: 8px;
+            }
+
+            .product-description {
+                margin-bottom: 12px;
+            }
+
+            .status-message {
+                min-height: 0;
+                margin: 0 0 8px;
+            }
+
+            .wish-button {
+                flex-basis: 44px;
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="header-back" href="MADONCHELLE.html#coleccion" aria-label="Volver a la tienda">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"></path><path d="m11.5 18.5-6.5-6.5 6.5-6.5"></path></svg>
+        </a>
+        <a class="site-logo" href="MADONCHELLE.html" aria-label="Makemma, página principal">
+            MADONCHELLE
+        </a>
+        <button class="header-cart" id="cart-toggle" type="button" aria-label="Abrir carrito" aria-controls="cart-panel" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 8h14l-1.2 12H6.2L5 8Z"></path>
+                <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+            </svg>
+        </button>
+    </header>
+    <main>
+        <div class="product-layout">
+            <section class="gallery-shell is-loading" aria-label="Imágenes del producto" aria-busy="true">
+                <div class="gallery-loading-skeleton" aria-hidden="true">
+                    <span class="skeleton-shimmer"></span>
+                    <span class="skeleton-shimmer"></span>
+                </div>
+                <div class="gallery-scroll-controls" aria-label="Desplazar imágenes">
+                    <button id="gallery-up" type="button" aria-label="Ver imágenes anteriores">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"></path></svg>
+                    </button>
+                    <button id="gallery-down" type="button" aria-label="Ver imágenes siguientes">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 10 6 6 6-6"></path></svg>
+                    </button>
+                </div>
+                <div class="product-gallery" id="product-gallery">
+                </div>
+            </section>
+            <section class="product-info is-loading" aria-labelledby="product-name" aria-busy="true">
+                <div class="product-detail-skeleton" aria-hidden="true">
+                    <div class="product-skeleton-title-row">
+                        <span class="product-skeleton-title skeleton-shimmer"></span>
+                        <span class="product-skeleton-wish skeleton-shimmer"></span>
+                    </div>
+                    <div class="product-skeleton-description">
+                        <i class="skeleton-shimmer"></i>
+                        <i class="skeleton-shimmer"></i>
+                        <i class="skeleton-shimmer"></i>
+                        <i class="skeleton-shimmer"></i>
+                        <i class="skeleton-shimmer"></i>
+                    </div>
+                    <span class="product-skeleton-status skeleton-shimmer"></span>
+                    <span class="product-skeleton-price skeleton-shimmer"></span>
+                    <span class="product-skeleton-button skeleton-shimmer"></span>
+                </div>
+                <div class="product-title-row">
+                    <h1 id="product-name"></h1>
+                    <button class="wish-button" id="wish-button" type="button" aria-label="Guardar en favoritos" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.2 4.9a5.1 5.1 0 0 0-7.2 0L12 5.9l-1-1a5.1 5.1 0 0 0-7.2 7.2l1 1L12 21l7.2-7.9 1-1a5.1 5.1 0 0 0 0-7.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-description" aria-label="Descripción del producto"></div>
+                <p class="status-message" id="status-message" aria-live="polite"></p>
+                <p class="product-price" id="product-price"></p>
+                <div class="product-actions" id="product-actions">
+                    <button class="add-to-cart" id="add-to-cart" type="button">Añadir al carrito</button>
+                    <div class="product-purchase-controls" id="product-purchase-controls" aria-hidden="true">
+                        <button class="quantity-icon-button remove-one" id="product-remove-one" type="button" aria-label="Quitar una unidad">
+                            <svg viewBox="0 0 32 32" aria-hidden="true">
+                                <path d="M3 5h4l3.2 16h15.4L29 10H8"></path>
+                                <circle cx="13" cy="26" r="1.5"></circle>
+                                <circle cx="24" cy="26" r="1.5"></circle>
+                                <path d="M14 14h8"></path>
+                            </svg>
+                        </button>
+                        <button class="quantity-icon-button add-one" id="product-add-one" type="button" aria-label="Añadir otra unidad">
+                            <svg viewBox="0 0 32 32" aria-hidden="true">
+                                <path d="M3 5h4l3.2 16h15.4L29 10H8"></path>
+                                <circle cx="13" cy="26" r="1.5"></circle>
+                                <circle cx="24" cy="26" r="1.5"></circle>
+                                <path d="M18 11v7M14.5 14.5h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-panel" id="cart-panel" aria-label="Carrito y lista de deseos" aria-hidden="true">
+        <div class="cart-header">
+            <h2>Tu selección</h2>
+            <button class="close-button" id="cart-close" type="button" aria-label="Cerrar carrito">&times;</button>
+        </div>
+        <div class="panel-tabs" role="tablist" aria-label="Contenido de tu selección">
+            <button class="tab-button is-active" type="button" data-tab="cart" role="tab" aria-selected="true">Carrito</button>
+            <button class="tab-button" type="button" data-tab="wishlist" role="tab" aria-selected="false">Lista de deseos (<span id="wishlist-count">0</span>)</button>
+        </div>
+        <div class="panel-content" id="panel-content"></div>
+        <div class="cart-footer" id="cart-footer">
+            <div class="cart-total"><span>Total</span><span id="cart-total">$0.00</span></div>
+            <button class="checkout-button" id="checkout-button" type="button">Finalizar compra</button>
+        </div>
+    </aside>
+    <script>
+        const products = [
+            { id: 'bolso-lino', name: 'Iluminador – Golden Aura', price: 6, description: 'Golden Aura aporta destellos luminosos para conseguir un acabado radiante. Aplícalo en los puntos del rostro que quieras destacar y difumina suavemente. Puedes graduar la intensidad para crear desde un brillo delicado hasta un efecto más luminoso.', category: 'iluminadores', image: 'Producto1.png', images: ['Producto1.png', 'Producto1.2.png'] },
+            { id: 'vela-alba', name: 'Base – Perfecté Skin', price: 9, description: 'Perfecté Skin tiene una textura ligera que ayuda a unificar el tono de la piel. Extiende una pequeña cantidad y difumina de manera uniforme para integrar el acabado. Una base sencilla de incorporar a tu rutina diaria de maquillaje.', category: 'bases', image: 'Producto2.png', images: ['Producto2.png', 'Producto2.2.png'] },
+            { id: 'pañuelo-azul', name: 'Bronzer – Soleil Touch', price: 6.5, description: 'Soleil Touch añade calidez y dimensión al rostro con un acabado natural. Difumina el producto gradualmente en las zonas que quieras definir y aportar un toque cálido. Su color acompaña tu maquillaje sin perder un aspecto equilibrado.', category: 'bronzers', image: 'Producto3.png', images: ['Producto3.png', 'Producto3.3.png'] },
+            { id: 'producto-4', name: 'Labial – Amour Satin', price: 5.5, description: 'Amour Satin es un labial cremoso que ofrece un color elegante y uniforme. Deslízalo sobre los labios para conseguir una aplicación pareja y cómoda. Su acabado ayuda a completar tanto maquillajes sencillos como looks más definidos.', category: 'labiales', image: 'Producto4.png', images: ['Producto4.png', 'Producto4.2.png'] },
+            { id: 'producto-5', name: 'Rubor – Rosé Bloom', price: 5.75, description: 'Rosé Bloom aporta un delicado toque de color a las mejillas para un aspecto fresco. Aplica poco a poco y difumina hasta alcanzar la intensidad que prefieras. Combina fácilmente con maquillajes naturales y tonos suaves.', category: 'rubores', image: 'Producto5.png', images: ['Producto5.png', 'Producto5.2.png'] },
+            { id: 'producto-6', name: 'Sombra – Velvet Dreams', price: 8.5, description: 'Velvet Dreams ofrece tonos suaves y elegantes con acabados mate y brillantes. Combina las texturas para crear profundidad o usa un tono por sí solo para un resultado sutil. Difumina los bordes para integrar el color en tu maquillaje.', category: 'sombras', image: 'Producto6.png', images: ['Producto6.png', 'Producto6.2.png'] },
+            { id: 'producto-7', name: 'Rímel – Noir Étoile', price: 5, description: 'Noir Étoile realza tus pestañas y aporta volumen y definición para destacar la mirada. Pasa el cepillo desde la raíz hasta las puntas con movimientos suaves. Añade otra capa si quieres intensificar el efecto.', category: 'mascaras', image: 'Producto7.png', images: ['Producto7.png', 'Producto7.2.png'] },
+            { id: 'producto-8', name: 'Delineador – Midnight Line', price: 3.75, description: 'Midnight Line es un delineador de color negro intenso para crear trazos finos y definidos. Su punta permite dibujar líneas precisas junto a las pestañas. Ajusta el grosor del trazo para lograr un acabado discreto o más marcado.', category: 'delineadores', image: 'Producto8.png', images: ['Producto8.png', 'Producto8.2.png'] },
+            { id: 'producto-9', name: 'Gloss – Rosé Glaze', price: 4.5, description: 'Rosé Glaze es un brillo labial luminoso que aporta color y frescura. Su aspecto natural y sofisticado combina con distintos estilos de maquillaje. Aplícalo solo para un toque ligero o sobre tu labial favorito.', category: 'labiales', image: 'Producto9.png', images: ['Producto9.png', 'Producto9.2.png'] },
+            { id: 'producto-10', name: 'Lápiz de ojos – Midnight Whisper', price: 3.5, description: 'Midnight Whisper tiene una textura suave y es fácil de aplicar. Define y resalta la mirada con trazos precisos para crear looks delicados o intensos. Puedes ajustar el resultado variando la presión y difuminando el trazo.', category: 'delineadores', image: 'Producto10.png', images: ['Producto10.png', 'Producto10.2.png'] },
+            { id: 'balsamo-rose-eclat', name: 'Bálsamo labial - Rosé Éclat', price: 4.99, description: 'Dale a tus labios un toque de suavidad y frescura con Rosé Éclat. Su textura cremosa aporta hidratación y un delicado brillo rosado. Perfecto para lucir unos labios radiantes, suaves y naturalmente hermosos.', category: 'labiales', image: 'Balsamo.png', images: ['Balsamo.png', 'Balsamo2.png'] }
+        ];
+        const productId = new URLSearchParams(window.location.search).get('id');
+        const product = products.find((item) => item.id === productId);
+        const addButton = document.getElementById('add-to-cart');
+        const productActions = document.getElementById('product-actions');
+        const productPurchaseControls = document.getElementById('product-purchase-controls');
+        const wishButton = document.getElementById('wish-button');
+        const cart = JSON.parse(localStorage.getItem('makemma-cart') || '{}');
+        const wishlist = JSON.parse(localStorage.getItem('makemma-wishlist') || '[]');
+        const productIds = new Set(products.map((item) => item.id));
+        Object.keys(cart).forEach((id) => {
+            if (!productIds.has(id)) delete cart[id];
+        });
+        const validWishlist = wishlist.filter((id) => productIds.has(id));
+        wishlist.splice(0, wishlist.length, ...validWishlist);
+        localStorage.setItem('makemma-cart', JSON.stringify(cart));
+        localStorage.setItem('makemma-wishlist', JSON.stringify(wishlist));
+        const cartPanel = document.getElementById('cart-panel');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const panelContent = document.getElementById('panel-content');
+        const cartFooter = document.getElementById('cart-footer');
+        const productInfo = document.querySelector('.product-info');
+        const galleryShell = document.querySelector('.gallery-shell');
+        let activeTab = 'cart';
+
+        const formatPrice = (value) => `$${value.toFixed(2)}`;
+        const findProduct = (id) => products.find((item) => item.id === id);
+
+        function updateWishButton() {
+            const isSaved = wishlist.includes(product.id);
+            wishButton.classList.toggle('is-saved', isSaved);
+            wishButton.setAttribute('aria-pressed', String(isSaved));
+            wishButton.setAttribute('aria-label', isSaved ? 'Quitar de favoritos' : 'Guardar en favoritos');
+        }
+
+        function updateProductPurchaseControls() {
+            if (!product) return;
+            const quantity = cart[product.id] || 0;
+            const hasItems = quantity > 0;
+            productActions.classList.toggle('is-in-cart', hasItems);
+            productPurchaseControls.setAttribute('aria-hidden', String(!hasItems));
+            productPurchaseControls.querySelectorAll('button').forEach((button) => {
+                button.disabled = !hasItems;
+            });
+            addButton.setAttribute('aria-label', hasItems
+                ? `Añadir otra unidad de ${product.name}. Hay ${quantity} en el carrito.`
+                : `Añadir ${product.name} al carrito`);
+            document.getElementById('product-remove-one').setAttribute('aria-label', `Quitar una unidad de ${product.name}`);
+            document.getElementById('product-add-one').setAttribute('aria-label', `Añadir otra unidad de ${product.name}`);
+        }
+
+        function renderCart() {
+            const cartEntries = Object.entries(cart);
+            const total = cartEntries.reduce((sum, [id, quantity]) => {
+                const item = findProduct(id);
+                return sum + (item ? item.price * quantity : 0);
+            }, 0);
+            document.getElementById('wishlist-count').textContent = wishlist.length;
+            document.getElementById('cart-total').textContent = formatPrice(total);
+            updateProductPurchaseControls();
+
+            if (activeTab === 'cart') {
+                panelContent.innerHTML = cartEntries.length ? cartEntries.map(([id, quantity]) => {
+                    const item = findProduct(id);
+                    if (!item) return '';
+                    return `<div class="cart-item"><div><strong>${item.name}</strong><span>${formatPrice(item.price)} · ${quantity} unidad${quantity === 1 ? '' : 'es'}</span><div class="item-controls"><button class="quantity-button" data-action="decrease" data-id="${id}" type="button" aria-label="Restar una unidad">−</button><span>${quantity}</span><button class="quantity-button" data-action="increase" data-id="${id}" type="button" aria-label="Agregar una unidad">+</button></div></div><button class="remove-button" data-action="remove" data-id="${id}" type="button">Eliminar</button></div>`;
+                }).join('') : '<p class="empty-message">Tu carrito está vacío.<br>Añade algún producto.</p>';
+                cartFooter.hidden = false;
+            } else {
+                panelContent.innerHTML = wishlist.length ? wishlist.map((id) => {
+                    const item = findProduct(id);
+                    if (!item) return '';
+                    return `<div class="cart-item"><div><strong>${item.name}</strong><span>${formatPrice(item.price)}</span></div><button class="add-button" data-action="wishlist-add" data-id="${id}" type="button">Añadir</button></div>`;
+                }).join('') : '<p class="empty-message">Todavía no has guardado favoritos.<br>Usa el corazón del producto.</p>';
+                cartFooter.hidden = true;
+            }
+        }
+
+        function setCartOpen(open) {
+            cartPanel.classList.toggle('is-open', open);
+            cartOverlay.classList.toggle('is-visible', open);
+            cartPanel.setAttribute('aria-hidden', String(!open));
+            document.getElementById('cart-toggle').setAttribute('aria-expanded', String(open));
+            if (open) renderCart();
+        }
+
+        if (product) {
+            document.title = `${product.name} | MADONCHELLE`;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = formatPrice(product.price);
+            const description = document.createElement('p');
+            description.textContent = product.description;
+            document.querySelector('.product-description').replaceChildren(description);
+            const gallery = document.getElementById('product-gallery');
+            gallery.classList.toggle('is-contained', product.id === 'bolso-lino');
+            gallery.classList.toggle('is-lipstick', product.id === 'producto-4');
+            const images = product.images || [product.image];
+            const imageElements = images.map((source, index) => {
+                const frame = document.createElement('div');
+                frame.className = 'gallery-image is-square is-loading';
+                const image = document.createElement('img');
+                image.src = source;
+                image.alt = `${product.name}, imagen ${index + 1}`;
+                frame.append(image);
+                image.addEventListener('load', () => frame.classList.remove('is-loading'), { once: true });
+                image.addEventListener('error', () => {
+                    frame.classList.remove('is-loading');
+                    frame.classList.add('has-image-error');
+                }, { once: true });
+                return frame;
+            });
+            gallery.replaceChildren(...imageElements);
+            Promise.all(imageElements.map((frame) => {
+                const image = frame.querySelector('img');
+                if (image.complete) return Promise.resolve();
+                return new Promise((resolve) => {
+                    image.addEventListener('load', resolve, { once: true });
+                    image.addEventListener('error', resolve, { once: true });
+                });
+            })).then(() => {
+                imageElements.forEach((frame) => {
+                    frame.classList.remove('is-loading');
+                    if (frame.querySelector('img').naturalWidth === 0) frame.classList.add('has-image-error');
+                });
+                galleryShell.classList.remove('is-loading');
+                galleryShell.removeAttribute('aria-busy');
+                productInfo.classList.remove('is-loading');
+                productInfo.removeAttribute('aria-busy');
+            });
+            updateWishButton();
+
+            wishButton.addEventListener('click', () => {
+                const index = wishlist.indexOf(product.id);
+                if (index === -1) wishlist.push(product.id);
+                else wishlist.splice(index, 1);
+                localStorage.setItem('makemma-wishlist', JSON.stringify(wishlist));
+                updateWishButton();
+                renderCart();
+            });
+
+            addButton.addEventListener('click', () => {
+                cart[product.id] = (cart[product.id] || 0) + 1;
+                localStorage.setItem('makemma-cart', JSON.stringify(cart));
+                setCartOpen(true);
+            });
+
+            document.getElementById('product-add-one').addEventListener('click', () => {
+                cart[product.id] = (cart[product.id] || 0) + 1;
+                localStorage.setItem('makemma-cart', JSON.stringify(cart));
+                renderCart();
+            });
+
+            document.getElementById('product-remove-one').addEventListener('click', () => {
+                cart[product.id] -= 1;
+                if (cart[product.id] <= 0) delete cart[product.id];
+                localStorage.setItem('makemma-cart', JSON.stringify(cart));
+                renderCart();
+            });
+        } else {
+            galleryShell.classList.remove('is-loading');
+            galleryShell.removeAttribute('aria-busy');
+            productInfo.classList.remove('is-loading');
+            productInfo.removeAttribute('aria-busy');
+            document.title = 'Producto no encontrado | MADONCHELLE';
+            document.getElementById('product-name').textContent = 'Producto no encontrado';
+            document.getElementById('product-price').textContent = '';
+            document.querySelector('.product-description').hidden = true;
+            wishButton.hidden = true;
+            addButton.disabled = true;
+            document.getElementById('status-message').textContent = 'Vuelve a la tienda y selecciona un producto.';
+        }
+
+        renderCart();
+        document.getElementById('cart-toggle').addEventListener('click', () => setCartOpen(true));
+        document.getElementById('cart-close').addEventListener('click', () => setCartOpen(false));
+        cartOverlay.addEventListener('click', () => setCartOpen(false));
+
+        document.querySelectorAll('.tab-button').forEach((button) => button.addEventListener('click', () => {
+            activeTab = button.dataset.tab;
+            document.querySelectorAll('.tab-button').forEach((tab) => {
+                const selected = tab === button;
+                tab.classList.toggle('is-active', selected);
+                tab.setAttribute('aria-selected', String(selected));
+            });
+            renderCart();
+        }));
+
+        panelContent.addEventListener('click', (event) => {
+            const button = event.target.closest('button[data-action]');
+            if (!button) return;
+            const { action, id } = button.dataset;
+            if (action === 'increase' || action === 'wishlist-add') cart[id] = (cart[id] || 0) + 1;
+            if (action === 'decrease') cart[id] -= 1;
+            if (action === 'remove' || cart[id] === 0) delete cart[id];
+            localStorage.setItem('makemma-cart', JSON.stringify(cart));
+            renderCart();
+        });
+
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            window.alert('Gracias por tu compra. Aquí conectarías la pasarela de pago.');
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && cartPanel.classList.contains('is-open')) setCartOpen(false);
+        });
+
+        const productGallery = document.getElementById('product-gallery');
+        let galleryIndex = 0;
+
+        function moveProductGallery(direction) {
+            const frames = [...productGallery.children];
+            if (frames.length < 2) return;
+
+            const isHorizontal = window.matchMedia('(max-width: 760px)').matches;
+            const currentPosition = isHorizontal ? productGallery.scrollLeft : productGallery.scrollTop;
+            const currentIndex = frames.reduce((closestIndex, frame, index) => {
+                const position = isHorizontal ? frame.offsetLeft : frame.offsetTop;
+                const closestPosition = isHorizontal
+                    ? frames[closestIndex].offsetLeft
+                    : frames[closestIndex].offsetTop;
+                return Math.abs(position - currentPosition) < Math.abs(closestPosition - currentPosition)
+                    ? index
+                    : closestIndex;
+            }, galleryIndex);
+
+            galleryIndex = (currentIndex + direction + frames.length) % frames.length;
+            productGallery.scrollTo({
+                left: isHorizontal ? frames[galleryIndex].offsetLeft : 0,
+                top: isHorizontal ? 0 : frames[galleryIndex].offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        document.getElementById('gallery-up').addEventListener('click', () => moveProductGallery(-1));
+        document.getElementById('gallery-down').addEventListener('click', () => moveProductGallery(1));
+    </script>
+</body>
+</html>
